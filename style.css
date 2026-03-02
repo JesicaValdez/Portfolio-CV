@@ -207,19 +207,12 @@ p {
 /* Esto detecta si es un celular o tablet */
 @media screen and (max-width: 1024px) {
   .hero-image {
+    /* Forzamos el scroll y reafirmamos la imagen */
     background-attachment: scroll !important;
-    --hero-attachment: scroll !important; /* Por si usas la variable */
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    --hero-attachment: scroll !important;
+    background-image: url('assets/hero_guimaraes.png') !important; 
+    
+    min-height: 100vh; 
   }
 }
 
