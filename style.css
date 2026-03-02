@@ -1,24 +1,24 @@
 /*Custom Properties*/
 :root {
   --first-color: #d90062;
-  --first-alpha-color: rgba(217, 0, 98, 0.75);
-  --second-color: #14192d;
-  --second-alpha-color: rgba(20, 25, 45, 0.75);
-  --third-color: #501464;
+  --first-alpha-color: rgba(217, 0, 98, 0.85);
+  --second-color: #111526;
+  --second-alpha-color: rgba(17, 21, 38, 0.80);
+  --third-color: #4a105c;
   --third-alpha-color: rgba(80, 20, 100, 0.75);
   --white-color: #fff;
-  --gray-light-color: #f3f3f3;
-  --gray-color: #ccc;
-  --gray-dark-color: #666;
+  --gray-light-color: #f9fbfd;
+  --gray-color: #e1e8ed;
+  --gray-dark-color: #57606a;
   --black-color: #000;
-  --link-color: #509ee3;
-  --tittle-color: #333;
-  --text-color: #222;
+  --link-color: #00a3ff;
+  --tittle-color: #091e42;;
+  --text-color: #2d3e50;
   --white-alpha-color: rgba(255, 255, 255, 0.5);
   --black-alpha-color: rgba(0, 0, 0, 0.5);
   --font: "Raleway", sans-serif;
   --max-width: 1200px;
-  --header-height: 4rem;
+  --header-height: 4.5rem;
 }
 /*-------------------*/
 
@@ -199,6 +199,20 @@ p {
 .hero-image-title {
   font-size: 7.5vw; /*toma el porcentaje del tamaño de la pantalla*/
   color: var(--hero-text-color);
+  font-weight: 800;
+  letter-spacing: -2px;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Menu */
@@ -311,7 +325,7 @@ p {
 
 /* Box shadow class */
 .box-shadow-1 {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 /*-------Progress Bar------------*/
@@ -355,7 +369,7 @@ progress::-moz-progress-value {
 
 .btn {
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: inline-block;
   width: 200px;
   font-weight: bold;
@@ -363,6 +377,16 @@ progress::-moz-progress-value {
   text-decoration: none;
   color: var(--white-color);
   background-color: var(--first-color);
+  transition: all 0.3s ease;
+  border:none;
+  box-shadow: 0 4px 15px rgba(217, 0, 98, 0.3);
+}
+
+.btn:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(217, 0, 98, 0.5);
+  background-color: var(--third-alpha-color);
 }
 
 .container {
@@ -429,6 +453,66 @@ progress::-moz-progress-value {
   margin-bottom: 2rem;
 }
 
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.fa-js-square {
+  color: #f7df1e; /* El amarillo clásico de JavaScript */
+}
+
+.skill-group {
+  background-color: var(--white-color);
+  padding: 1.5rem;
+  border-radius: 0.8rem;
+  border-top: 4px solid var(--first-color); /* Una línea elegante arriba */
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.skill-header i {
+  color: var(--first-color);
+  font-size: 1.2rem;
+}
+
+.skill-header h4 {
+  margin: 0;
+  color: var(--title-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li {
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--gray-light-color);
+  color: var(--text-color);
+}
+
+.skill-list li:last-child {
+  border-bottom: none;
+}
+
+@media screen and (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr; /* Se ponen una al lado de la otra en tablets/PC */
+  }
+}
+
 .contact-card {
   margin: 1rem auto;
   padding: 1rem;
@@ -491,12 +575,19 @@ progress::-moz-progress-value {
   width: 100%;
   margin: 0 auto;
   display: block;
+  overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .portfolio-card img {
   width: 100%;
   height: 100%;
   object-fit: cover; /*ajuste img*/
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Movimiento fluido */
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.1);
 }
 
 .portfolio-card-info {
@@ -505,12 +596,13 @@ progress::-moz-progress-value {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: var(--first-alpha-color);
   color: var(--white-color);
   opacity: 0;
   pointer-events: none;
-  transition: all 0.5s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 2; /*asegura que el contenido esté por encima de la imagen*/
 }
 
 .portfolio-card:hover .portfolio-card-info {
@@ -520,9 +612,13 @@ progress::-moz-progress-value {
 
 .portfolio-card-info > div {
   padding: 1rem;
-  border: thin solid var(--white-color);
+  border: 2px solid var(--white-color);
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .portfolio-modal {
@@ -551,14 +647,25 @@ progress::-moz-progress-value {
 }
 
 .service-card {
+  background-color: var(--white-color);
   margin: 1rem auto;
-  padding: 1rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
   text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);
+  border-color: var(--first-color);
 }
 
 .service-card h3 {
   color: var(--tittle-color);
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .service-card svg {
@@ -643,7 +750,7 @@ progress::-moz-progress-value {
     position: sticky;
     top: 0;
     padding: 0.5rem;
-    height: calc((--header-height) --0.5rem);
+    height: calc(var(--header-height) - 0.5rem);
   }
 
   .portfolio > .container {
