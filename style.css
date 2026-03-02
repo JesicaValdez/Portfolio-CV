@@ -204,6 +204,14 @@ p {
   animation: fadeInDown 1.2s ease-out;
 }
 
+/* Esto detecta si es un celular o tablet */
+@media screen and (max-width: 1024px) {
+  .hero-image {
+    background-attachment: scroll !important;
+    --hero-attachment: scroll !important; /* Por si usas la variable */
+  }
+}
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
